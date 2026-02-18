@@ -1,44 +1,20 @@
-Screaming Frog Internal Link Analyzer
-An automated Python-based utility to audit and visualize internal linking structures. This script processes Screaming Frog "All Inlinks" bulk exports to quickly isolate broken links, redirects, and non-standard link types (JavaScript, Canonical, etc.) that reside within your website's internal structure.
+# Screaming Frog Internal Link Analyzer 🐸🔍
 
-🚀 The Problem it Solves
-Screaming Frog bulk exports often contain hundreds of thousands of rows, mixing internal and external data. Manual filtering is time-consuming. This tool:
+An automated Python utility designed to audit and visualize internal linking structures. This script processes **Screaming Frog "All Inlinks"** bulk exports to isolate broken links, redirects, and non-standard link types that reside within your website's internal architecture.
 
-Separates Outbound vs. Inbound: Focuses purely on the internal site architecture.
+## 🚀 Key Features
 
-Identifies "Non-200" Placements: Instantly maps where 404s and 301s are triggered (Hyperlinks vs. JavaScript vs. Images).
+* **Noise Reduction:** Automatically separates outbound links from internal ones so you only audit the link equity you control.
+* **Link Type Profiling:** Aggregates and counts link types including JavaScript, Hyperlinks, Images, and Canonical tags.
+* **Status Visualization:** Provides a quick summary of page status codes (e.g., Moved Permanently, Not Found, OK).
+* **Heatmap Analysis:** A Seaborn-powered heatmap that maps **Link Type** (Y-axis) against **Status Code** (X-axis) to pinpoint precisely where non-200 links live.
+* **Batch Export:** Automatically generates individual CSV reports for every non-200 link category in a dedicated folder for easy developer hand-off.
 
-Automated Segmentation: Exports specific broken link lists into organized CSVs for developer hand-off.
 
-📊 Key Visualizations
-Status Code Heatmap
-The core of the analysis is a Seaborn heatmap that correlates Link Type (Y-axis) with Status Code (X-axis). This allows you to see, for example, if your 404 errors are coming primarily from hard-coded hyperlinks or dynamically injected JavaScript files.
 
-🛠️ How It Works
-Data Ingestion: Load your all_inlinks.csv from Screaming Frog.
+## 🛠️ Getting Started
 
-Internal Filtering: The script filters the Destination column to match your root domain, stripping away external noise.
-
-Link Type Summary: Aggregates link counts by category (Hyperlink, Image, CSS, JavaScript, etc.).
-
-Health Check: Summarizes status counts (OK, Not Found, Moved Permanently).
-
-Automated Export: Any group containing non-200 status codes is automatically exported to a dedicated CSV file in the /inlink_exports/ folder for easy sharing with dev teams.
-
-💻 Usage
-Export the All Inlinks report from Screaming Frog.
-
-Place the CSV in the same directory as the notebook.
-
-Update the file_path and root_domain variables in the second cell.
-
-Run all cells to generate reports and visualizations.
-
-📦 Requirements
-Python 3.x
-
-Pandas
-
-Matplotlib
-
-Seaborn
+### 1. Requirements
+Ensure you have the following Python libraries installed:
+```bash
+pip install pandas seaborn matplotlib
